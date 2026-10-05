@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Build Your First AI Project in 60 Minutes — NxtWave Free Workshop</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F6FB;--card:#fff;--ink:#0B1F3A;--mute:#52627a;--line:#d9e1ee;--acc:#2D5BFF;--acc-ink:#fff;--hi:#FFD23F;--ok:#0f9d58;--bad:#d93025;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1424;--card:#111f36;--ink:#eaf0fb;--mute:#9db0cc;--line:#25375a;--acc:#6f93ff;--acc-ink:#0A1424}}
+:root[data-theme="dark"]{--bg:#0A1424;--card:#111f36;--ink:#eaf0fb;--mute:#9db0cc;--line:#25375a;--acc:#6f93ff;--acc-ink:#0A1424}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.1;margin:0}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);border-bottom:1.5px solid var(--line);z-index:5}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+header b{font-family:'Bricolage Grotesque';font-size:18px}
+nav{display:flex;gap:4px;flex-wrap:wrap}nav a{padding:6px 11px;border-radius:8px;color:var(--mute);text-decoration:none;font-weight:600;font-size:14px}
+nav a.on{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn{display:inline-block;background:var(--acc);color:var(--acc-ink);border:0;border-radius:10px;padding:12px 20px;font:600 16px Figtree;cursor:pointer;text-decoration:none;text-align:center}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.page{display:none;padding:34px 0 50px}.page.on{display:block}
+.page>h1,.ph{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.sub{color:var(--mute);font-size:18px;max-width:60ch;margin:0 0 26px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+.hero h1{font-size:clamp(38px,6vw,62px);font-weight:800;letter-spacing:-.02em}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.chip{border:1.5px solid var(--line);border-radius:99px;padding:4px 13px;font-size:14px;background:var(--card)}
+.chip.hl{background:var(--hi);border-color:var(--hi);color:#0B1F3A;font-weight:600}
+.panel{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px}
+.min{font-size:44px;color:var(--acc);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--acc);margin:8px 0 14px}
+.bar{height:10px;background:var(--line);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .4s}
+.out{margin-top:12px;padding:10px 14px;border-left:4px solid var(--hi);background:var(--bg);font-size:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.g3 h3,.g2 h3{font-size:20px;margin-bottom:8px}.g3 p{margin:0;color:var(--mute);font-size:15px}
+.steps{border-left:3px solid var(--line);margin:0 0 0 8px;padding:0 0 0 22px}.steps div{position:relative;padding-bottom:22px}
+.steps div:before{content:'';position:absolute;left:-30px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--acc)}
+.steps h3{font-size:19px}.steps p{margin:3px 0 0;color:var(--mute)}.steps .mono{font-size:13px;color:var(--acc)}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 5px}
+input,select,textarea{width:100%;padding:12px;border:1.5px solid var(--line);border-radius:9px;background:var(--bg);color:var(--ink);font:400 16px Figtree}
+textarea{min-height:90px;font-family:inherit}textarea.m{min-height:150px;font:13px 'IBM Plex Mono',monospace}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px}
+.err{color:var(--bad);font-size:13px;min-height:18px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.big{font-family:'Bricolage Grotesque';font-size:56px;font-weight:800;line-height:1}.ok{color:var(--ok)}
+.code{display:flex;gap:8px;align-items:center;background:var(--bg);border:1.5px dashed var(--acc);padding:10px 14px;border-radius:10px;margin:8px 0 14px;word-break:break-all}
+.lb{width:100%;border-collapse:collapse;font-size:15px}.lb td,.lb th{padding:9px 6px;border-bottom:1px solid var(--line);text-align:left}
+.hide{display:none!important}.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.kpis div{background:var(--bg);border-radius:10px;padding:12px;font-size:13px}.kpis b{display:block;font-size:26px;font-family:'Bricolage Grotesque'}
+details{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}details p{margin:10px 0 0;color:var(--mute)}
+.proj{border-bottom:1px solid var(--line);padding:12px 0}.proj a{color:var(--acc)}.sc{font-family:'IBM Plex Mono';color:var(--ok);font-weight:500}
+.check{display:flex;gap:10px;align-items:center;font-weight:400;margin:6px 0}.check input{width:auto}
+footer{border-top:1.5px solid var(--line);padding:26px 0 46px;color:var(--mute);font-size:14px}footer a{color:var(--mute);margin-right:14px}
+@media(max-width:800px){.hero,.g2,.g3{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.row2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><b>NxtWave · AI in 60</b>
+<nav id="nav"><a href="#/">Home</a><a href="#/workshop">Workshop</a><a href="#/register">Register</a><a href="#/leaderboard">Leaderboard</a><a href="#/showcase">Showcase</a><a href="#/ambassador">Ambassadors</a><a href="#/faq">FAQ</a></nav></div></header>
+<main class="wrap">
+
+<!-- HOME -->
+<div class="page" id="p-home">
+ <div class="hero"><div>
+  <div class="chips"><span class="chip hl">Free · Live · Certificate</span><span class="chip">60 minutes · Live online</span></div>
+  <h1>Build your first AI project in 60 minutes.</h1>
+  <p class="sub">No AI experience needed. Just a laptop and a browser. Leave with a working project, a live link and a resume line recruiters ask about.</p>
+  <a class="btn" href="#/register">Register in 30 seconds</a> <a class="btn ghost" href="#/workshop">See the 60 minutes</a>
+  <p class="mono" style="font-size:13px;color:var(--mute);margin-top:16px"><span id="seatsLeft"></span></p>
+ </div>
+ <div class="panel"><div class="mono" style="font-size:13px;color:var(--mute)">Drag to scrub through the 60 minutes</div>
+  <div class="min mono"><span id="m">0</span> min</div><input type="range" id="sl" min="0" max="60" value="0" aria-label="Workshop minute">
+  <div class="bar"><i id="pb"></i></div><h3 id="st" style="margin-top:14px;font-size:22px"></h3><div class="out mono" id="so"></div></div></div>
+ <div class="g3" style="margin-top:44px">
+  <div class="panel"><h3>Projects beat marks</h3><p>Interviews now start with “show me something you built.” Most resumes have nothing that uses AI.</p></div>
+  <div class="panel"><h3>Zero setup, zero fear</h3><p>Everything runs in the browser. If you can write a sentence, you can follow along, whatever your branch.</p></div>
+  <div class="panel"><h3>You keep what you build</h3><p>A deployed link, the code, and a certificate for LinkedIn and your resume.</p></div></div>
+ <div class="panel" style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+  <div><div class="big"><span class="cnt">0</span><span style="font-size:22px;color:var(--mute)"> / 500</span></div><span style="color:var(--mute)">students registered</span></div>
+  <div style="flex:1;min-width:200px"><div class="bar"><i class="goal"></i></div></div><a class="btn" href="#/register">Reserve my seat</a></div>
+</div>
+
+<!-- WORKSHOP -->
+<div class="page" id="p-workshop">
+ <h1>What happens in the 60 minutes</h1><p class="sub">A guided build-along. You code with us, in your own browser, and finish with a project you can open on your phone.</p>
+ <div class="g2"><div class="steps">
+  <div><span class="mono">0–10 min</span><h3>Pick your idea</h3><p>Choose a problem you care about: a resume reviewer, study buddy or complaint classifier.</p></div>
+  <div><span class="mono">10–25 min</span><h3>Your first AI call</h3><p>Send a prompt to an AI model and get a real answer from your own code.</p></div>
+  <div><span class="mono">25–40 min</span><h3>Turn it into an app</h3><p>Add inputs and a clean screen so anyone can use it.</p></div>
+  <div><span class="mono">40–55 min</span><h3>Break it, fix it</h3><p>Test odd inputs and use AI as a pair-programmer to debug live.</p></div>
+  <div><span class="mono">55–60 min</span><h3>Ship it</h3><p>Deploy to a public link and write the resume bullet that goes with it.</p></div></div>
+ <div><div class="panel" style="margin-bottom:16px"><h3>Who it’s for</h3><p style="color:var(--mute);margin:0">Final-year engineering students from any branch who want a real project before placements. Third-years are welcome too.</p></div>
+  <div class="panel" style="margin-bottom:16px"><h3>What you need</h3><p style="color:var(--mute);margin:0">A laptop, a stable internet connection and a free account on the tools we share before the session.</p></div>
+  <div class="panel"><h3>What you get</h3><p style="color:var(--mute);margin:0">Live project link · certificate · project showcase listing · a template to keep building after the workshop.</p></div>
+  <a class="btn" href="#/register" style="margin-top:16px">Register for free</a></div></div>
+</div>
+
+<!-- REGISTER -->
+<div class="page" id="p-register">
+ <h1>Reserve your seat</h1><p class="sub">Free. Takes 30 seconds. Joining details come to you on WhatsApp.</p>
+ <div class="g2"><div class="panel" id="formPanel"><form id="f" novalidate onsubmit="return false">
+  <label for="n">Full name</label><input id="n" autocomplete="name"><div class="err" id="e_n"></div>
+  <label for="w">WhatsApp number</label><input id="w" inputmode="numeric" maxlength="10" placeholder="10-digit mobile" autocomplete="tel"><div class="err" id="e_w"></div>
+  <label for="em">College email</label><input id="em" type="email" autocomplete="email"><div class="err" id="e_em"></div>
+  <label for="c">College</label><input id="c" placeholder="e.g. JNTU Kakinada"><div class="err" id="e_c"></div>
+  <div class="row2"><div><label for="b">Branch</label><select id="b"><option value="">Select</option><option>CSE / IT / AI&amp;ML</option><option>ECE / EEE</option><option>Mechanical</option><option>Civil</option><option>Other</option></select><div class="err" id="e_b"></div></div>
+  <div><label for="y">Year</label><select id="y"><option value="">Select</option><option>Final year</option><option>Third year</option><option>Other</option></select><div class="err" id="e_y"></div></div></div>
+  <p class="mono" id="refNote" style="font-size:13px;color:var(--mute)"></p><button class="btn" type="submit" style="width:100%">Register for free</button></form></div>
+ <div><div class="panel" style="margin-bottom:16px"><div class="big"><span class="cnt">0</span><span style="font-size:22px;color:var(--mute)"> / 500</span></div><div style="margin:4px 0 12px;color:var(--mute)">students registered</div><div class="bar"><i class="goal"></i></div></div>
+  <div class="panel hide" id="done"><h3 class="ok">You’re in, <span id="dn"></span>. ✔</h3><p style="margin:8px 0 0">Bring 3 friends and climb the leaderboard. Your personal link:</p>
+   <div class="code mono"><span id="lnk" style="flex:1;font-size:13px"></span><button class="btn ghost" style="padding:6px 12px;font-size:13px" id="cp">Copy</button></div>
+   <a class="btn" id="wa" target="_blank" rel="noopener" href="#" style="display:block">Share on WhatsApp</a>
+   <p class="mono" style="font-size:12px;color:var(--mute);margin:10px 0 0">Your code: <b id="mc"></b> · <a href="#/leaderboard" style="color:var(--acc)">View leaderboard</a></p></div></div></div>
+</div>
+
+<!-- LEADERBOARD -->
+<div class="page" id="p-leaderboard">
+ <h1>Referral leaderboard</h1><p class="sub">Top 6 referrers win ₹200 each when registration closes. Every friend who registers with your link counts.</p>
+ <div class="panel"><table class="lb"><thead><tr><th>#</th><th>Student</th><th>Invited</th></tr></thead><tbody id="lb"></tbody></table></div>
+ <p style="margin-top:18px"><a class="btn" href="#/register">Register and get your link</a></p>
+</div>
+
+<!-- SHOWCASE -->
+<div class="page" id="p-showcase">
+ <h1>Project showcase</h1><p class="sub">Built something at the workshop? Submit it. Each project gets an instant check against a simple rubric.</p>
+ <div class="g2"><div class="panel"><form id="pf" novalidate onsubmit="return false">
+  <label for="pn">Your name</label><input id="pn"><label for="pt">Project title</label><input id="pt">
+  <label for="pl">Live link (https://…)</label><input id="pl" type="url"><label for="pd">What does it do? (2–3 sentences)</label><textarea id="pd"></textarea>
+  <label class="check"><input type="checkbox" id="pa"> It calls an AI model</label><label class="check"><input type="checkbox" id="pu"> Someone else can use it without my help</label>
+  <div class="err" id="pe"></div><button class="btn" type="submit" style="width:100%;margin-top:6px">Submit project</button></form></div>
+ <div><h3 style="font-size:20px;margin-bottom:8px">Submitted projects</h3><div class="panel" id="plist"></div></div></div>
+</div>
+
+<!-- AMBASSADOR -->
+<div class="page" id="p-ambassador">
+ <h1>Become a campus ambassador</h1><p class="sub">Run the invite in your college groups. We give you a ready message and a personal tracking link. Top referrers win cash rewards.</p>
+ <div class="g2"><div class="panel"><form id="af" novalidate onsubmit="return false">
+  <label for="an">Name</label><input id="an"><label for="ac">College / club</label><input id="ac"><label for="aw">WhatsApp number</label><input id="aw" inputmode="numeric" maxlength="10">
+  <label for="ag">How many WhatsApp groups can you share to?</label><select id="ag"><option>1–2</option><option>3–5</option><option>6+</option></select>
+  <div class="err" id="ae"></div><button class="btn" type="submit" style="width:100%;margin-top:6px">Get my kit</button></form></div>
+ <div class="panel hide" id="kit"><h3>Your kit is ready</h3><p style="color:var(--mute);margin:6px 0">Tracking link:</p><div class="code mono" id="klink" style="font-size:13px"></div>
+  <p style="color:var(--mute);margin:6px 0">Message to forward to your groups:</p><textarea class="m" id="kmsg" readonly></textarea>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px"><button class="btn ghost" id="kcp">Copy message</button><a class="btn" id="kwa" target="_blank" rel="noopener" href="#">Send on WhatsApp</a></div></div></div>
+</div>
+
+<!-- FAQ -->
+<div class="page" id="p-faq">
+ <h1>Questions</h1><p class="sub">If it isn’t here, ask in the WhatsApp group after you register.</p>
+ <details><summary>Is it really free?</summary><p>Yes. No fee, no card, no catch.</p></details>
+ <details><summary>I’m not a CSE student. Can I join?</summary><p>Yes. We start from zero, and the project is built with plain-language prompts, so any branch can follow.</p></details>
+ <details><summary>Do I need to install anything?</summary><p>No. Everything runs in your browser. We share the free accounts to create before the session.</p></details>
+ <details><summary>Will I get a certificate?</summary><p>Yes, for everyone who attends the live session and submits a project link.</p></details>
+ <details><summary>What if I miss the live session?</summary><p>Registered students get the recording link and the project template.</p></details>
+ <details><summary>How do referral rewards work?</summary><p>Share your personal link. The top 6 referrers on the leaderboard when registration closes win ₹200 each.</p></details>
+ <details><summary>What happens to my data?</summary><p>We use your details only for workshop updates and the certificate. We never sell them.</p></details>
+</div>
+
+<!-- ADMIN -->
+<div class="page" id="p-admin">
+ <h1>Organizer dashboard</h1><p class="sub">Which channel is working today? Double down on that one.</p>
+ <div class="panel"><div class="kpis"><div><b id="k1">0</b>registered</div><div><b id="k2">0</b>via referral</div><div><b id="k3">0</b>colleges</div><div><b id="k4">0</b>ambassadors</div><div><b id="k5">0</b>projects</div></div>
+  <div class="g2"><div><h3 style="font-size:17px">By source</h3><table class="lb" id="bySrc"></table></div><div><h3 style="font-size:17px">Top colleges</h3><table class="lb" id="byCol"></table></div></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="btn ghost" id="csv">Show CSV</button><button class="btn ghost" id="demo">Load demo data</button><button class="btn ghost" id="clr">Clear data</button></div>
+  <textarea class="m hide" id="csvOut" readonly style="margin-top:10px"></textarea>
+  <p style="font-size:13px;color:var(--mute)">Prototype: data is stored in this browser. In production the forms post to Google Sheets/Supabase through an n8n webhook, which also sends WhatsApp reminders.</p></div>
+</div>
+</main>
+<footer><div class="wrap"><a href="#/">Home</a><a href="#/workshop">Workshop</a><a href="#/register">Register</a><a href="#/faq">FAQ</a><a href="#/admin">Organizer</a><div style="margin-top:8px">NxtWave workshop prototype · Growth Intern Challenge</div></div></footer>
+
+<script>
+const K={r:'nw_regs',p:'nw_proj',a:'nw_amb'},$=id=>document.getElementById(id);
+const mem={r:[],p:[],a:[]};
+const get=k=>{try{const v=JSON.parse(localStorage.getItem(K[k])||'[]');return v.length?v:mem[k]}catch(e){return mem[k]}};
+const put=(k,a)=>{mem[k]=a;try{localStorage.setItem(K[k],JSON.stringify(a))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const q=new URLSearchParams(location.search),REF=(q.get('ref')||'').toUpperCase(),SRC=q.get('src')||(REF?'referral':'direct');
+const base=location.origin+location.pathname;
+const mk=n=>(n.trim().split(/\s+/)[0].replace(/[^a-z]/gi,'').slice(0,5).toUpperCase()||'NXT')+Math.floor(100+Math.random()*900);
+const msg=l=>`Hey! NxtWave is running a FREE live workshop: "Build Your First AI Project in 60 Minutes". Final-year students get a working AI project + certificate for the resume. Seats are limited, register here: ${l}`;
+const setErr=(o)=>{for(const k in o)$(k).textContent=o[k]||''};
+const phoneOk=v=>/^[6-9]\d{9}$/.test(v);
+
+/* router */
+const routes=['home','workshop','register','leaderboard','showcase','ambassador','faq','admin'];
+function route(){let r=location.hash.replace(/^#\/?/,'')||'home';if(!routes.includes(r))r='home';
+ routes.forEach(x=>$('p-'+x).classList.toggle('on',x===r));
+ document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#/'+(r==='home'?'':r)));
+ window.scrollTo(0,0);render();}
+addEventListener('hashchange',route);
+
+/* home widgets */
+const stages=[[0,'Idea locked in','Pick a problem you care about: resume reviewer, study buddy, complaint classifier.'],[10,'Your first AI call','Send a prompt to an AI model and get a real answer from your own code.'],[25,'Turn it into an app','Add inputs and a clean screen so anyone can use what you built.'],[40,'Break it, fix it','Test odd inputs. Use AI as a pair-programmer to debug live.'],[55,'Ship it','Deploy to a public link and write the resume bullet that goes with it.']];
+function scrub(){const v=+$('sl').value;let i=0;stages.forEach((s,k)=>{if(v>=s[0])i=k});$('m').textContent=v;$('pb').style.width=v/.6+'%';$('st').textContent=stages[i][1];$('so').textContent='> '+stages[i][2]}
+$('sl').oninput=scrub;scrub();
+
+
+/* render all dynamic parts */
+function render(){
+ const a=get('r'),n=a.length,pr=get('p'),am=get('a');
+ document.querySelectorAll('.cnt').forEach(e=>e.textContent=n);document.querySelectorAll('.goal').forEach(e=>e.style.width=Math.min(100,n/5)+'%');
+ $('seatsLeft').textContent=n>=500?'Goal reached · waitlist open':Math.max(0,500-n)+' of 500 seats left';
+ const c={};a.forEach(r=>{if(r.ref)c[r.ref]=(c[r.ref]||0)+1});
+ const top=Object.entries(c).sort((x,y)=>y[1]-x[1]).slice(0,10);
+ $('lb').innerHTML=top.length?top.map(([k,v],i)=>{const o=a.find(r=>r.code===k);return `<tr><td>${i+1}</td><td>${o?esc(o.name.split(' ')[0])+' <span style="color:var(--mute)">'+esc(o.college)+'</span>':esc(k)}</td><td class="mono">${v}</td></tr>`}).join(''):'<tr><td colspan="3" style="color:var(--mute)">No referrals yet. Be the first.</td></tr>';
+ $('plist').innerHTML=pr.length?pr.slice().reverse().map(p=>`<div class="proj"><b>${esc(p.title)}</b> <span class="sc">${p.score}/10</span><br><span style="color:var(--mute);font-size:14px">${esc(p.name)} · ${esc(p.desc)}</span><br><a href="${esc(p.link)}" target="_blank" rel="noopener noreferrer">Open project ↗</a></div>`).join(''):'<span style="color:var(--mute)">No projects yet. Yours could be first.</span>';
+ $('k1').textContent=n;$('k2').textContent=a.filter(r=>r.ref).length;$('k3').textContent=new Set(a.map(r=>r.college.toLowerCase())).size;$('k4').textContent=am.length;$('k5').textContent=pr.length;
+ const tab=o=>Object.entries(o).sort((x,y)=>y[1]-x[1]).slice(0,6).map(([k,v])=>`<tr><td>${esc(k)}</td><td class="mono">${v}</td></tr>`).join('')||'<tr><td>No data</td></tr>';
+ const s={},cl={};a.forEach(r=>{s[r.src]=(s[r.src]||0)+1;cl[r.college]=(cl[r.college]||0)+1});$('bySrc').innerHTML=tab(s);$('byCol').innerHTML=tab(cl);
+ if(REF)$('refNote').textContent='Invited by code '+REF+'. Your friend gets credit.';
+}
+
+/* registration */
+$('f').addEventListener('submit',()=>{
+ const v={n:$('n').value.trim(),w:$('w').value.trim(),em:$('em').value.trim(),c:$('c').value.trim(),b:$('b').value,y:$('y').value},E={};
+ if(v.n.length<3)E.e_n='Enter your full name';
+ if(!phoneOk(v.w))E.e_w='Enter a valid 10-digit Indian mobile number';else if(get('r').some(r=>r.phone===v.w))E.e_w='This number is already registered';
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.em))E.e_em='Enter a valid email';
+ if(v.c.length<3)E.e_c='Enter your college name';if(!v.b)E.e_b='Choose your branch';if(!v.y)E.e_y='Choose your year';
+ ['e_n','e_w','e_em','e_c','e_b','e_y'].forEach(k=>$(k).textContent=E[k]||'');if(Object.keys(E).length)return;
+ const code=mk(v.n),a=get('r').slice();a.push({name:v.n,phone:v.w,email:v.em,college:v.c,branch:v.b,year:v.y,code,ref:REF&&REF!==code?REF:'',src:SRC,ts:new Date().toISOString()});put('r',a);
+ const l=`${base}?src=referral&ref=${code}`;$('dn').textContent=v.n.split(' ')[0];$('lnk').textContent=l;$('mc').textContent=code;$('wa').href='https://wa.me/?text='+encodeURIComponent(msg(l));
+ $('formPanel').innerHTML='<h3>Registered ✔</h3><p style="color:var(--mute)">Joining details reach you on WhatsApp 24 hours and 1 hour before the session.</p>';$('done').classList.remove('hide');render();});
+$('cp').onclick=()=>{const t=$('lnk').textContent;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>$('cp').textContent='Copied').catch(()=>{const r=document.createRange();r.selectNode($('lnk'));getSelection().removeAllRanges();getSelection().addRange(r);$('cp').textContent='Press Ctrl+C'})};
+
+/* showcase: submit + auto-score */
+$('pf').addEventListener('submit',()=>{
+ const v={name:$('pn').value.trim(),title:$('pt').value.trim(),link:$('pl').value.trim(),desc:$('pd').value.trim()};
+ if(v.name.length<2||v.title.length<3||v.desc.length<15){$('pe').textContent='Fill name, title and a short description.';return}
+ let ok=false;try{ok=/^https?:$/.test(new URL(v.link).protocol)}catch(e){}
+ if(!ok){$('pe').textContent='Enter a valid https:// link.';return}$('pe').textContent='';
+ const words=v.desc.split(/\s+/).length;let score=2;score+=Math.min(2,Math.floor(words/12));if($('pa').checked)score+=3;if($('pu').checked)score+=2;if(/^https:/.test(v.link))score+=1;
+ const a=get('p').slice();a.push({...v,score:Math.min(10,score),ai:$('pa').checked,ts:new Date().toISOString()});put('p',a);
+ ['pn','pt','pl','pd'].forEach(i=>$(i).value='');$('pa').checked=$('pu').checked=false;render();});
+
+/* ambassador kit */
+$('af').addEventListener('submit',()=>{
+ const n=$('an').value.trim(),c=$('ac').value.trim(),w=$('aw').value.trim();
+ if(n.length<2||c.length<2||!phoneOk(w)){$('ae').textContent='Enter name, college and a valid 10-digit number.';return}$('ae').textContent='';
+ const code='AMB'+(n.replace(/[^a-z]/gi,'').slice(0,4).toUpperCase()||'X')+Math.floor(10+Math.random()*90),l=`${base}?src=wa&ref=${code}`,m=msg(l);
+ const a=get('a').slice();a.push({name:n,college:c,phone:w,groups:$('ag').value,code});put('a',a);
+ $('klink').textContent=l;$('kmsg').value=m;$('kwa').href='https://wa.me/?text='+encodeURIComponent(m);$('kit').classList.remove('hide');render();});
+$('kcp').onclick=()=>{$('kmsg').select();try{document.execCommand('copy');$('kcp').textContent='Copied'}catch(e){}};
+
+/* admin */
+$('csv').onclick=()=>{const h=['name','phone','email','college','branch','year','code','ref','src','ts'];$('csvOut').value=[h.join(',')].concat(get('r').map(r=>h.map(k=>'"'+String(r[k]||'').replace(/"/g,'""')+'"').join(','))).join('\n');$('csvOut').classList.remove('hide')};
+$('demo').onclick=()=>{const cols=['JNTU Kakinada','Aditya Engineering','GITAM Vizag','VIT Vellore','SRM Chennai','Anna University','Pragati Engineering','Andhra University'],srcs=['wa','wa','wa','club','email'],nm=['Ravi','Sneha','Arjun','Priya','Kiran','Meera','Vikas','Divya'],t=new Date().toISOString();
+ const a=[{name:'Ravi Kumar',phone:'9000000001',email:'ravi@college.edu',college:cols[0],branch:'CSE / IT / AI&ML',year:'Final year',code:'RAVI482',ref:'',src:'wa',ts:t},{name:'Sneha Rao',phone:'9000000002',email:'sneha@college.edu',college:cols[2],branch:'ECE / EEE',year:'Final year',code:'SNEHA311',ref:'',src:'club',ts:t}];
+ for(let i=0;i<40;i++){const via=i>8&&Math.random()<.5;a.push({name:nm[i%8]+' Demo'+i,phone:'9'+String(100000000+i*7919).slice(0,9),email:'d'+i+'@college.edu',college:cols[Math.floor(Math.random()*8)],branch:'CSE / IT / AI&ML',year:'Final year',code:nm[i%8].toUpperCase()+(100+i),ref:via?['RAVI482','SNEHA311'][i%2]:'',src:via?'referral':srcs[i%5],ts:t})}
+ put('r',a);put('p',[{name:'Ravi',title:'Resume Roaster',link:'https://example.com',desc:'Paste a resume and get three blunt fixes from an AI model.',score:9,ai:true,ts:t}]);put('a',[{name:'Sneha',college:cols[2],phone:'9000000002',groups:'3–5',code:'AMBSNEH55'}]);render();};
+$('clr').onclick=()=>{put('r',[]);put('p',[]);put('a',[]);$('csvOut').classList.add('hide');render()};
+if(location.hash==='#admin')location.hash='#/admin';route();
+</script>
+</body></html>
